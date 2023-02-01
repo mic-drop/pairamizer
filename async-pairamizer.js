@@ -24,6 +24,13 @@ function makePairs() {
     //create new string of new pairs
     const newPairsString = newPairs.map(pair => pair.join(',')).join('\n');
 
+    //If this prints, something went wrong
+    if (newPairs.length != cadetList.length / 2) {
+
+        console.log("Something shitty happened...")
+        return;
+    }
+
     //append string pairs to pairs-list file
     fs.appendFileSync('pairs-list.txt', '\n' + newPairsString + '\n', 'utf8');
 
@@ -34,11 +41,6 @@ function makePairs() {
 
 
 
-    if (newPairs.length != cadetList.length / 2) {
-
-        console.log("Something shitty happened...")
-        return;
-    }
 
 }
 
