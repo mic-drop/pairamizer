@@ -22,8 +22,11 @@ fs.readFile('cadet-list.txt', 'utf8', function (err, data) {
         console.dir(newPairs);
 
         if (cadetList.length % 2 === 0) {
-            if (newPairs.length * 2 !== cadetList.length) {
-                console.log('this is newPairs length', newPairs.length)
+            console.log('cadet-list is pair');
+
+            if ((newPairs.length * 2) !== cadetList.length) {
+                console.log('this is newPairs length times 2', (newPairs.length * 2))
+                console.log('this is newPairs length', (newPairs.length))
                 console.log('this is cadetList length', cadetList.length)
                 console.log("Possible pairs exhausted.... ")
                 return;
@@ -31,12 +34,12 @@ fs.readFile('cadet-list.txt', 'utf8', function (err, data) {
 
         }
 
-        if (newPairs.length * 2 + 1 !== cadetList.length) {
-            console.log('this is newPairs length', newPairs.length)
-            console.log('this is cadetList length', cadetList.length)
-            console.log("Possible pairs exhausted.... ")
-            return;
-        }
+        /*         if (newPairs.length * 4 + 1 !== cadetList.length) {
+                    console.log('this is newPairs length', newPairs.length)
+                    console.log('this is cadetList length', cadetList.length)
+                    console.log("Possible pairs exhausted.... ")
+                    return;
+                } */
 
         fs.appendFile('pairs-list.txt', '\n' + newData + '\n', 'utf8', function (err) {
 
@@ -64,8 +67,15 @@ function createPairs(cadetList, previousPairs) {
     let newPairs = [];
     let shuffledCadets = shuffleCadetList(cadetList);
 
+    //console.log(shuffledCadets);
+
     for (let i = 0; i < shuffledCadets.length; i++) {
+        console.log('this is shuffled cadets',shuffledCadets);
+
+
         for (let j = i + 1; j < shuffledCadets.length; j++) {
+            console.log(shuffledCadets[i], 'first cadet of pair')
+            console.log(shuffledCadets[i], 'first cadet of pair')
 
             if (!usedElements.includes(shuffledCadets[i]) && !usedElements.includes(shuffledCadets[j])) {
 
