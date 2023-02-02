@@ -7,10 +7,15 @@ function makePairs() {
 
     console.log('this is cadetList', cadetList);
 
+
     //read cadet-list file of made pairs and create array where each element is a pair of previous names
     const madePairs = fs.readFileSync('pairs-list.txt', 'utf8').split('\n').filter(pair => pair !== '');
 
     console.log('this is pairs-list BEFORE', madePairs);
+
+    if (cadetList.length % 2 !== 0) {
+        cadetList.push('ODD ONE OUT')
+    }
 
     //create brand new pairs
     const newPairs = createPairs(cadetList, madePairs);
